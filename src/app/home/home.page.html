@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color ="success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      หน้าหลัก | {{timestring}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+    <div class = "row">
+      <div class = "col">
+          <h1>Status :{{status ? "เปิด":"ปิด"}} </h1>
+      </div>
+      <br />
+          <div class = "col text-right">
+            <div style="margin-top: 20px">
+              <ion-toggle color="primary" [(ngModel)]="status"></ion-toggle>
+          </div>
+        </div>
+    </div>
+
+    <ngx-gauge
+     [type]="'full'" 
+     [value]="temp" 
+     [label]="'อุณหภูมิ'"  
+     [append]="'°C'"
+     thick ="20"
+     cap = "round"
+     foregroundColor = "rgba(0, 100, 50, 5)"
+     > 
+    </ngx-gauge>
+    
+      <ngx-gauge
+       [type]="'full'" 
+       [value]="hum" 
+       [label]="'ความชื่น'"  
+       [append]="'°C'"
+       thick ="20"
+       cap = "round"
+       foregroundColor = "rgba(0, 100, 50, 5)"
+       >
+      </ngx-gauge>
+
+  
+ 
+
+<ion-item lines = "Full">
+  <ion-label>ตั้งเวลา</ion-label>
+  <ion-datetime displayFormat="HH:mm" (ionChange) = "getTime(timechang.value)" #timechang></ion-datetime>
+</ion-item>
+</ion-content>
